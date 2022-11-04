@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {# mettre les guillements #}
+
+{% block title %} {{ contact.full_name }} {% endblock %} {# double accolades #}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-body">
+        <h5 class="card-title"> {{ contact.full_name }}</h5>
+        <p class="card-text"> date of birth : {{ contact.birth_date|date:'d/m/Y' }} </p> {# Utilisation des filtres du moteur de template #}
+        <p class="card-text">email : <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a></p>
+        <p class="card-text">phone : <a href="tel:{{ contact.phone }}"> {{ contact.phone }}</a></p>
+        <a href="{% url 'contact:contact_edit' contact.id %}"><button class="btn btn-primary"> edit</button></a>
+        <a href="{% url 'contact:contact_delete' contact.id %}"><button class="btn btn-danger"> delete</button></a>
+    </div>
+</div>
+
+{% endblock %}
